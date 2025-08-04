@@ -6,18 +6,6 @@ export const EditorTabs = [
     icon: swatch,
   },
   {
-    name: "filepicker",
-    icon: fileIcon,
-  },
-  {
-    name: "logocontrols",
-    icon: logoControls,
-  },
-  {
-    name: "textcontrols",
-    icon: textIcon,
-  },
-  {
     name: "texturelogopicker",
     icon: textureLogoPicker,
   },
@@ -25,27 +13,19 @@ export const EditorTabs = [
 
 export const FilterTabs = [
   {
-    name: "frontLogoShirt",
-    icon: logoShirt,
-  },
-  {
-    name: "backLogoShirt",
-    icon: logoShirt,
-  },
-  {
-    name: "frontTextShirt",
-    icon: textIcon,
-  },
-  {
-    name: "backTextShirt",
-    icon: textIcon,
-  },
-  {
-    name: "stylishShirt",
+    name: "body",
     icon: stylishShirt,
   },
   {
-    name: "downloadShirt",
+    name: "eyes",
+    icon: stylishShirt,
+  },
+  {
+    name: "stem",
+    icon: stylishShirt,
+  },
+  {
+    name: "downloadPumpkin",
     icon: download,
   },
 ];

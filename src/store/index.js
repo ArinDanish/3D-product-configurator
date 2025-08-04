@@ -2,36 +2,37 @@ import { proxy } from 'valtio';
 
 const state = proxy({
   intro: true,
-  color: '#EFBD48',
-  isFrontLogoTexture: true,
-  isBackLogoTexture: true,
-  isFrontText: true,
-  isBackText: true,
-  isFullTexture: false,
-  frontLogoDecal: './threejs.png',
-  fullDecal: './texture.jpeg',
-  frontLogoPosition: [ 0, 0.04, 0.15 ],
-  frontLogoScale: 0.15,
-  backLogoDecal: './threejs.png',
-  backLogoPosition: [0, 0.04, -0.15],
-  backLogoRotation: [0, Math.PI, 0],
-  backLogoScale: 0.15,
-  frontText: 'Front Text',
-  frontTextPosition: [0, -0.04, 0.15],
-  frontTextRotation: [0, 0, 0],
-  frontTextFontSize: 0.1,
-  frontTextScale: [0.15, 0.04, 0.1],
-  frontTextFont: 'Arial',
-  frontTextSize: 64,
-  frontTextColor: 'black',
-  backText: 'Back Text',
-  backTextPosition: [0, -0.04, -0.15],
-  backTextRotation: [0, Math.PI, 0],
-  backTextFontSize: 0.1,
-  backTextScale: [0.15, 0.04, 0.1],
-  backTextFont: 'Arial',
-  backTextSize: 64,
-  backTextColor: 'white',
+  
+  // Active part for color picking
+  activePart: 'body',
+  
+  // Pumpkin colors - initially undefined to use original model colors
+  bodyColor: undefined,
+  eyesColor: undefined,
+  stemColor: undefined,
+  
+  // Color presets
+  bodyColorPresets: [
+    '#ff6b00',  // Classic Orange
+    '#ff4500',  // Deep Orange
+    '#ffa500',  // Bright Orange
+    '#ff8c00',  // Dark Orange
+    '#ffffff',  // White (Ghost Pumpkin)
+  ],
+  eyesColorPresets: [
+    '#000000',  // Black
+    '#ff0000',  // Red
+    '#ffff00',  // Yellow
+    '#00ff00',  // Green
+    '#ff8c00',  // Orange (for reverse effect)
+  ],
+  stemColorPresets: [
+    '#2d5a27',  // Dark Green
+    '#355e3b',  // Hunter Green
+    '#228b22',  // Forest Green
+    '#654321',  // Brown
+    '#8b4513',  // Saddle Brown
+  ],
 });
 
 export default state;

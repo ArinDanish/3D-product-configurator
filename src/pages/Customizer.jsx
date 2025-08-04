@@ -16,36 +16,19 @@ const Customizer = () => {
   const [file, setFile] = useState('');
 
   const [activeEditorTab, setActiveEditorTab] = useState("");
-  const [activeFilterTab, setActiveFilterTab] = useState({
-    frontLogoShirt: true,
-    backLogoShirt: true,
-    frontTextShirt: true,
-    backTextShirt: true,
-    stylishShirt: false,
-  })
+  const [activeFilterTab, setActiveFilterTab] = useState("body");
+
+  const handlePartSelect = (tabName) => {
+    // Update active part in the store
+    state.activePart = tabName;
+    setActiveFilterTab(tabName);
+  };
 
   // show tab content depending on the activeTab
   const generateTabContent = () => {
     switch (activeEditorTab) {
       case "colorpicker":
-        return <ColorPicker />
-      case "filepicker":
-        return <FilePicker
-          file={file}
-          setFile={setFile}
-          readFile={readFile}
-        />
-      case "logocontrols":
-        return <LogoControls />;
-      case "textcontrols":
-        return <TextControls />;
-      case "texturelogopicker":
-        return (
-          <TextureLogoPicker
-            texturesLogos={texturesLogos}
-            handleTextureLogoClick={handleTextureLogoClick}
-          />
-        );
+        return <ColorPicker part={activeFilterTab} />;
       default:
         return null;
     }
@@ -77,41 +60,13 @@ const Customizer = () => {
   }
 
   const handleActiveFilterTab = (tabName) => {
-    switch (tabName) {
-      case "frontLogoShirt":
-          state.isFrontLogoTexture = !activeFilterTab[tabName];
-        break;
-      case "backLogoShirt":
-          state.isBackLogoTexture = !activeFilterTab[tabName];
-        break;
-      case "frontTextShirt":
-          state.isFrontText = !activeFilterTab[tabName];
-        break;
-      case "backTextShirt":
-          state.isBackText = !activeFilterTab[tabName];
-        break;
-      case "stylishShirt":
-          state.isFullTexture = !activeFilterTab[tabName];
-        break;
-        case "downloadShirt":
-          downloadCanvasToImage();
-        break;
-      default:
-        state.isFrontLogoTexture = true;
-        state.isBackLogoTexture = true;
-        state.isFrontText = true;
-        state.isBackText = true;
-        state.isFullTexture = false;
-        break;
+    if (tabName === 'downloadPumpkin') {
+      downloadCanvasToImage();
+      return;
     }
-
-    // after setting the state, activeFilterTab is updated
-    setActiveFilterTab((prevState) => {
-      return {
-        ...prevState,
-        [tabName]: !prevState[tabName]
-      }
-    })
+    
+    // Update the active part
+    handlePartSelect(tabName);
   }
 
   const readFile = (type) => {

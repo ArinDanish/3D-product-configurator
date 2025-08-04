@@ -18,6 +18,8 @@ export const reader = (file) =>
   });
 
 export const getContrastingColor = (color) => {
+  if (!color) return '#000000'; // Return black as default if no color provided
+
   // Remove the '#' character if it exists
   const hex = color.replace("#", "");
 

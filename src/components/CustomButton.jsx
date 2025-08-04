@@ -8,16 +8,19 @@ const CustomButton = ({ type, title, customStyles, handleClick }) => {
   const snap = useSnapshot(state);
 
   const generateStyle = (type) => {
+    const defaultColor = '#ff6b00'; // Default pumpkin color
+    const buttonColor = snap.bodyColor || defaultColor;
+
     if(type === 'filled') {
       return {
-        backgroundColor: snap.color,
-        color: getContrastingColor(snap.color)
+        backgroundColor: buttonColor,
+        color: getContrastingColor(buttonColor)
       }
     } else if(type === "outline") {
       return {
         borderWidth: '1px',
-        borderColor: snap.color,
-        color: snap.color
+        borderColor: buttonColor,
+        color: buttonColor
       }
     }
   }

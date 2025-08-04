@@ -1,0 +1,69 @@
+import React from 'react'
+import * as THREE from 'three';
+import { easing } from 'maath';
+import { useSnapshot } from 'valtio';
+import { useFrame } from '@react-three/fiber';
+import { useGLTF, OrbitControls } from '@react-three/drei';
+
+import state from '../store';
+
+const Pumpkin = () => {
+  const snap = useSnapshot(state);
+  
+  // Load the model
+  const { nodes, materials } = useGLTF('/pumpkin.glb');
+  
+  console.log('Loaded Model:', { nodes, materials });
+
+  // Update materials
+  useFrame((state, delta) => {
+    if (materials) {
+      if (snap.bodyColor) {
+        Object.values(materials).forEach(material => {
+          if (material.name.toLowerCase().includes('body')) {
+            easing.dampC(material.color, snap.bodyColor, 0.25, delta);
+          }
+        });
+      }
+      if (snap.eyesColor) {
+        Object.values(materials).forEach(material => {
+          if (material.name.toLowerCase().includes('eye')) {
+            easing.dampC(material.color, snap.eyesColor, 0.25, delta);
+          }
+        });
+      }
+      if (snap.stemColor) {
+        Object.values(materials).forEach(material => {
+          if (material.name.toLowerCase().includes('stem')) {
+            easing.dampC(material.color, snap.stemColor, 0.25, delta);
+          }
+        });
+      }
+    }
+  });
+
+  if (!nodes || !materials) {
+    console.error('Model not loaded:', { nodes, materials });
+    return null;
+  }
+
+  return (
+    <>
+      <OrbitControls 
+        enablePan={false}
+        enableZoom={true}
+        minPolarAngle={Math.PI/4}
+        maxPolarAngle={Math.PI/2}
+      />
+      
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[10, 10, 10]} intensity={0.5} />
+
+      <group>
+        <primitive object={nodes.Scene} />
+      </group>
+    </>
+  );
+}
+
+export default Pumpkin;
