@@ -2,37 +2,31 @@ import { proxy } from 'valtio';
 
 const state = proxy({
   intro: true,
-  
-  // Active part for color picking
-  activePart: 'body',
-  
-  // Pumpkin colors - initially undefined to use original model colors
-  bodyColor: undefined,
-  eyesColor: undefined,
-  stemColor: undefined,
-  
-  // Color presets
-  bodyColorPresets: [
-    '#ff6b00',  // Classic Orange
-    '#ff4500',  // Deep Orange
-    '#ffa500',  // Bright Orange
-    '#ff8c00',  // Dark Orange
-    '#ffffff',  // White (Ghost Pumpkin)
-  ],
-  eyesColorPresets: [
-    '#000000',  // Black
-    '#ff0000',  // Red
-    '#ffff00',  // Yellow
-    '#00ff00',  // Green
-    '#ff8c00',  // Orange (for reverse effect)
-  ],
-  stemColorPresets: [
-    '#2d5a27',  // Dark Green
-    '#355e3b',  // Hunter Green
-    '#228b22',  // Forest Green
-    '#654321',  // Brown
-    '#8b4513',  // Saddle Brown
-  ],
+  color: '#EFBD48',
+  isFullTexture: false,
+  isFrontLogoTexture: false,
+  isBackLogoTexture: false,
+  isFrontText: false,
+  isBackText: false,
+  frontLogoDecal: './threejs.png',
+  backLogoDecal: './threejs.png',
+  fullDecal: './threejs.png',
+  frontLogoPosition: [0, 0, 0],
+  frontLogoScale: 0.15,
+  backLogoPosition: [0, 0, 0],
+  backLogoScale: 0.15,
+  frontText: '',
+  frontTextPosition: [0, 0, 0],
+  frontTextRotation: [0, 0, 0],
+  frontTextScale: [0.1, 0.1, 0.1],
+  frontTextFont: 'Arial',
+  frontTextColor: '#000000',
+  backText: '',
+  backTextPosition: [0, 0, 0],
+  backTextRotation: [0, 0, 0],
+  backTextScale: [0.1, 0.1, 0.1],
+  backTextFont: 'Arial',
+  backTextColor: '#000000'
 });
 
 export default state;

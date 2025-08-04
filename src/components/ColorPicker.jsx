@@ -4,60 +4,29 @@ import { useSnapshot } from 'valtio'
 
 import state from '../store'
 
-const ColorPicker = ({ part }) => {
+const ColorPicker = () => {
   const snap = useSnapshot(state)
-
-  const getColor = () => {
-    switch(part) {
-      case 'body':
-        return snap.bodyColor
-      case 'eyes':
-        return snap.eyesColor
-      case 'stem':
-        return snap.stemColor
-      default:
-        return '#ffffff'
-    }
-  }
-
-  const getPresets = () => {
-    switch(part) {
-      case 'body':
-        return snap.bodyColorPresets
-      case 'eyes':
-        return snap.eyesColorPresets
-      case 'stem':
-        return snap.stemColorPresets
-      default:
-        return []
-    }
-  }
-
-  const updateColor = (color) => {
-    const { hex } = color
-
-    switch(part) {
-      case 'body':
-        state.bodyColor = hex
-        break
-      case 'eyes':
-        state.eyesColor = hex
-        break
-      case 'stem':
-        state.stemColor = hex
-        break
-      default:
-        break
-    }
-  }
 
   return (
     <div className="absolute left-full ml-3">
       <SketchPicker 
-        color={getColor()}
-        presetColors={getPresets()}
+        color={snap.color}
         disableAlpha
-        onChange={updateColor}
+        presetColors={[
+          '#ccc',
+          '#EFBD4E',
+          '#80C670',
+          '#726DE8',
+          '#353934',
+          '#2CCCE4',
+          '#ff8a65',
+          '#7098DA',
+          '#C19277',
+          '#FF96AD',
+          '#512314',
+          '#5F123D',
+        ]}
+        onChange={(color) => state.color = color.hex}
       />
     </div>
   )

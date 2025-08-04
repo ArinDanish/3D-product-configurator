@@ -1,9 +1,14 @@
-import { swatch, fileIcon, logoShirt, stylishShirt, logoControls, textIcon, download, textureLogoPicker, texture1, texture2, texture3, texture4, texture5, logo1, logo2 } from "../assets";
+import { swatch, fileIcon, logoControls, textIcon, textureLogoPicker } from "../assets";
+import { texture1, texture2, texture3, texture4, texture5, logo1, logo2 } from "../assets";
 
 export const EditorTabs = [
   {
     name: "colorpicker",
     icon: swatch,
+  },
+  {
+    name: "filepicker",
+    icon: fileIcon,
   },
   {
     name: "texturelogopicker",
@@ -13,82 +18,59 @@ export const EditorTabs = [
 
 export const FilterTabs = [
   {
-    name: "body",
-    icon: stylishShirt,
+    name: "logoControls",
+    icon: logoControls,
   },
   {
-    name: "eyes",
-    icon: stylishShirt,
-  },
-  {
-    name: "stem",
-    icon: stylishShirt,
-  },
-  {
-    name: "downloadPumpkin",
-    icon: download,
+    name: "textControls",
+    icon: textIcon,
   },
 ];
 
-export const DecalTypes = {
-  frontLogo: {
-    stateProperty: "frontLogoDecal",
-    filterTab: "logoShirt",
-  },
-  backLogo: {
-    stateProperty: "backLogoDecal",
-    filterTab: "logoShirt",
-  },
-  full: {
-    stateProperty: "fullDecal",
-    filterTab: "stylishShirt",
-  },
-};
-
-export const texturesLogos = [
+export const DecalTypes = [
   {
-    name: "Texture 1",
+    name: 'texture1',
+    type: 'texture',
     image: texture1,
-    type: "texture",
   },
   {
-    name: "Texture 2",
+    name: 'texture2',
+    type: 'texture',
     image: texture2,
-    type: "texture",
   },
   {
-    name: "Texture 3",
+    name: 'texture3',
+    type: 'texture',
     image: texture3,
-    type: "texture",
   },
   {
-    name: "Texture 4",
+    name: 'texture4',
+    type: 'texture',
     image: texture4,
-    type: "texture",
   },
   {
-    name: "Texture 5",
+    name: 'texture5',
+    type: 'texture',
     image: texture5,
-    type: "texture",
   },
   {
-    name: "Front Logo 1",
+    name: 'logo1',
+    type: 'frontLogo',
     image: logo1,
-    type: "frontLogo",
   },
   {
-    name: "Front Logo 2",
+    name: 'logo2',
+    type: 'frontLogo',
     image: logo2,
-    type: "frontLogo",
   },
   {
-    name: "Back Logo 1",
+    name: 'logo1',
+    type: 'backLogo',
     image: logo1,
-    type: "backLogo",
   },
   {
-    name: "Back Logo 2",
+    name: 'logo2',
+    type: 'backLogo',
     image: logo2,
-    type: "backLogo",
   },
 ];

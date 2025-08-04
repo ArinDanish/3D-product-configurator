@@ -1,32 +1,25 @@
-import React, { Suspense } from 'react';
+import React from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Center } from '@react-three/drei';
-import Pumpkin from './Pumpkin';
-import CameraRig from './CameraRig';
+import { Environment, Center } from '@react-three/drei'
+import Pumpkin from './Pumpkin'
+import Backdrop from './Backdrop'
+import CameraRig from './CameraRig'
 
 const CanvasModel = () => {
   return (
     <Canvas
-      camera={{ position: [0, 0, 2], fov: 45 }}
+      shadows
+      camera={{ position: [0, 0, 2], fov: 35 }}
       gl={{ preserveDrawingBuffer: true }}
       className="w-full max-w-full h-full transition-all ease-in"
-      shadows
     >
-      <color attach="background" args={['#f0f0f0']} />
-      <fog attach="fog" args={['#f0f0f0', 10, 20]} />
       <ambientLight intensity={0.5} />
-      <directionalLight 
-        position={[1, 2, 3]} 
-        intensity={1} 
-        castShadow 
-        shadow-mapSize={[1024, 1024]}
-      />
+      <Environment preset="sunset" />
 
       <CameraRig>
+        <Backdrop />
         <Center>
-          <Suspense fallback={null}>
-            <Pumpkin />
-          </Suspense>
+          <Pumpkin />
         </Center>
       </CameraRig>
     </Canvas>
