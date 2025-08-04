@@ -14,12 +14,19 @@ const CanvasModel = () => {
       className="w-full max-w-full h-full transition-all ease-in"
     >
       <ambientLight intensity={0.5} />
-      <Environment preset="sunset" />
+      <Environment preset="city" />
 
       <CameraRig>
         <Backdrop />
         <Center>
-          <Pumpkin />
+          <React.Suspense fallback={
+            <mesh>
+              <boxGeometry args={[1, 1, 1]} />
+              <meshStandardMaterial color="blue" />
+            </mesh>
+          }>
+            <Pumpkin />
+          </React.Suspense>
         </Center>
       </CameraRig>
     </Canvas>
